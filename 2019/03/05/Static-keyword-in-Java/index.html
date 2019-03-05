@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2019 | Shiqi&#39;s Blog</title>
+  <title>Static keyword in Java | Shiqi&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -159,108 +159,108 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 </div>
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/b_img.png) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>Stay hungry, stay foolish.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>这身行囊装不下宝藏，归来时，请多带些风霜。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/03/05/Javadoc/">Javadoc</a></h4>
-                            
-                            <p><time datetime="2019-03-05T03:26:14.000Z"><a href="/2019/03/05/Javadoc/">2019-03-05</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/03/05/Static-keyword-in-Java/">Static keyword in Java</a></h4>
-                            
-                            <p><time datetime="2019-03-05T03:05:04.000Z"><a href="/2019/03/05/Static-keyword-in-Java/">2019-03-05</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/03/04/JS-HTML-DOM/">JS HTML DOM</a></h4>
-                            
-                            <p><time datetime="2019-03-04T14:58:07.000Z"><a href="/2019/03/04/JS-HTML-DOM/">2019-03-04</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/03/04/JavaScript-学习总结/">JavaScript 学习总结</a></h4>
-                            
-                            <p><time datetime="2019-03-04T13:13:32.000Z"><a href="/2019/03/04/JavaScript-学习总结/">2019-03-04</a></time></p>
-                        </div>
-                    
-                        
-                            </div><div class="row boxes">
-                            
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/03/03/旅程开始/">旅程开始</a></h4>
-                            
-                            <p><time datetime="2019-03-03T09:27:20.000Z"><a href="/2019/03/03/旅程开始/">2019-03-03</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-03-05T03:05:04.000Z" itemprop="datePublished">
+          2019-03-05
+      </time>
+    
+</span>
+                <h1>Static keyword in Java</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="when-do-we-need-static"><a href="#when-do-we-need-static" class="headerlink" title="when do we need static?"></a>when do we need static?</h1><p>Normally after you use new keyword to create an object，memory and methods become available.<br><strong> There are two situation that this approach is not sufficient </strong></p>
+<ol>
+<li>One is you want to have only a single piece of storage for perticular field, regardless of how many objects you want to create.</li>
+<li>The other is you need a method that can call even if no objects are created.</li>
+</ol>
+<ul>
+<li>when you say something is static, it means that perticular field is not tied to any object instance of that class. *</li>
+<li>You can call static method or access static field *</li>
+</ul>
+<blockquote>
+<p>Some OO language call it class method and class data, meaning that the data and method exist only for the class as whole, not for any perticular objects of the class.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticTest</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> int i = <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">StaticTest st1 = <span class="keyword">new</span> StaticTest();</span><br><span class="line">StaticTest st2 = <span class="keyword">new</span> StaticTest();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>even you make two StaticTest objects, there will still be only one piece of storage for StaticTest.i<br>st1 and st2 are both refer to 50 </p>
+</blockquote>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p></p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2019/03/05/Javadoc/" style="float: left;">
+        ← Javadoc
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/03/04/JS-HTML-DOM/">
+        JS HTML DOM →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
