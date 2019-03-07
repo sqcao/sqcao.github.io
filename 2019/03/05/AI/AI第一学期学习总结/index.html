@@ -429,7 +429,7 @@
 </blockquote>
 <hr>
 <h2 id="Uniform-Cost-search"><a href="#Uniform-Cost-search" class="headerlink" title="Uniform-Cost search"></a>Uniform-Cost search</h2><blockquote>
-<p>Priority queue from frontier<br>UCS is a special form of BFS, it also called lowest cost search<br>UCS expand paths from the frontier in order of their costs<br>Edge cost must be greater than zero in order to use the UCS</p>
+<p>Priority queue from frontier<br>UCS is a special form of BFS, it also called lowest cost search<br>UCS expand paths from the frontier in order of their costs from start to the current node n (denote as g(n))<br>Edge cost must be greater than zero in order to use the UCS</p>
 </blockquote>
 <hr>
 <h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><blockquote>
@@ -447,6 +447,74 @@
 <hr>
 <h2 id="IDS-Iterative-Deepening-Search"><a href="#IDS-Iterative-Deepening-Search" class="headerlink" title="IDS Iterative Deepening Search"></a>IDS Iterative Deepening Search</h2><blockquote>
 <p><strong>Goal of IDS: achieve linear spcae complexity, complete and optimal</strong><br>Key idea: re-compute elements of the frontier rather than saving them<br>How to understand this key idea?<br>Iterative estimate the max depth l of DLS one by one<br><img src="IDS.png" alt="IDS"><br>Time complexity of IDS: O(b^m)<br>How to get the time complexity?<br>depth1 total number of path is b, and in IDS it will be created m times<br>depth2 total number of path is b^2, and it will be created m-1 times<br>….<br>depthm total number of path is b^m, and it will be created one time only<br>So in total there will be O(b^m)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">Complete</th>
+<th style="text-align:center">Optimal</th>
+<th style="text-align:center">Time</th>
+<th style="text-align:center">Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DFS</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">O(b^m)</td>
+<td style="text-align:center">O(mb)</td>
+</tr>
+<tr>
+<td>BFS</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">O(b^m)</td>
+<td style="text-align:center">O(b^m)</td>
+</tr>
+<tr>
+<td>IDS</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">O(b^m)</td>
+<td style="text-align:center">O(mb)</td>
+</tr>
+<tr>
+<td>UCS</td>
+<td style="text-align:center">Y(cost&gt;0)</td>
+<td style="text-align:center">Y(cost&gt;0)</td>
+<td style="text-align:center">O(b^m)</td>
+<td style="text-align:center">O(b^m)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="Heuristic-Informed-Search"><a href="#Heuristic-Informed-Search" class="headerlink" title="Heuristic(Informed) Search"></a>Heuristic(Informed) Search</h2><blockquote>
+<p>An estimate of the distance from the current state to the goal will help us do better<br>Uninformed/Blind search algorithms do not take into account the goal until we reach the goal node<br>Definition of the heuristic function:<br>A search heuristic h(n) is an estimate cost of shortest path from node n to goal node<br><strong>admissible heuristic</strong>: if it never overestimate the cost from n to goal<br>There is never a path has lower cost than h(n), it’s the lower bound on the cost from n to nearest goal<br>example of admissible heuristic:<br>If there is obstacle, the robot can walk through the obstacle is admissible heuristic.<br>For 8-puzzle, reasonable admissible heuristic is number of misplaced tiles</p>
+</blockquote>
+<p><strong>Constructing an admissible heuristic</strong><br>You should identify constraints which, when dropped make the problem extremely easy.<br>This is important because heuristic are not useful at all if they are as hard as the original problem!</p>
+<hr>
+<h2 id="Heuristic-Dominance"><a href="#Heuristic-Dominance" class="headerlink" title="Heuristic: Dominance"></a>Heuristic: Dominance</h2><p>if h2(n) &gt;= h1(n), then h2 dominates h1, h2 is better for search because it’s more closed to the real situation</p>
+<p><strong>How to combine heuristic when there is no dominance?</strong><br>if they both are admissible, h(n) = max(h1,h2) is also admissible and it dominates all its components.</p>
+<hr>
+<h2 id="Best-First-Search-Greedy-search"><a href="#Best-First-Search-Greedy-search" class="headerlink" title="Best First Search (Greedy search)"></a>Best First Search (Greedy search)</h2><blockquote>
+<p>If UCS uses cost from start to the curret node n (g(n)), then best first search uses h(n) that estimates the shortest distance to goal<br>Greedy Best-first search (use heuristic function f(n) = h(n), expand the node that appears closest to the goal)<br>Is Greedy search optimal? (No)<br>Is Greedy search complete? (No) it might be a dead end but it appears nearer to goal, then the search will stuck inside the loops<br>Time and space complexity: O(b^m)</p>
+</blockquote>
+<hr>
+<h2 id="Here-we-comes-A-search-algorithm"><a href="#Here-we-comes-A-search-algorithm" class="headerlink" title="Here we comes A* search algorithm"></a>Here we comes A* search algorithm</h2><blockquote>
+<p>ASTAR is a mix of UCS (g(n)) and greedy (h(n))<br>UCS is optimal ,complete but not efficient.<br>greedy is neither optimal not complete, but it’s efficient<br>So combine them Astar is a good algorithm.<br>Astar frontier is priority queue ordered by f(p) = g(p)+h(p)<br>Time and space complexity = O(b^m)<br>So why do we use Astar? Because with a good heuristic, it can significant improve the search.<br>Completeness: Yes<br>Optimality: ??<br>Astar is optimal when</p>
+<ul>
+<li>branching factor is finite</li>
+<li>arc costs is positive</li>
+<li>h(n) is admissible</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Why is Astar Optimal?</strong><br>Proof:<br>Asumme there is  another goal node p’ has shorter distance than goal node p. Before choose goal node p’, there could be another node p”, when agent choose between p” and p, it chooses p means cost(p)+h(p) less or equal to cost(p”)+h(p”) this is equation1<br>For p’, since h is admissible, cost(p”)+h(p”) less equal to cost(p’) this is equation2<br>Combine equation1 and equation2, we have cost(p) less or equal to cost(p’)</p>
+</blockquote>
+<blockquote>
+<p><strong>Optimal efficiency of Astar</strong><br>If using same heuristic, no search algorithm could do better than Astar<br>Key advantage of Astar is: it’s optimal and avoids expanding unnecessary paths<br>Then what is the biggest problem with Astar? <strong>Space</strong><br>So if possible we can have a better solution with DFS+heuristic</p>
 </blockquote>
 
             <div class="clearfix"></div>
